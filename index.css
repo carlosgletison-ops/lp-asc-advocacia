@@ -382,7 +382,7 @@ header.scrolled {
 
 .hero-title {
   font-family: var(--font-heading); /* Playfair Display */
-  font-size: clamp(2.6rem, 4.8vw, 3.8rem);
+  font-size: clamp(2rem, 8vw, 3.8rem);
   line-height: 1.25;
   font-weight: 400;
   color: var(--on-surface); /* Espresso Dark */
@@ -2319,5 +2319,42 @@ footer {
 
 .editorial-composition {
   animation: slowFloat 8s ease-in-out infinite;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 120px;
+    padding-bottom: 60px;
+  }
+  .hero-desc {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-trust-indicators {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .editorial-composition {
+    max-width: 300px;
+    height: 360px;
+  }
+  .editorial-circle {
+    width: 220px;
+    height: 220px;
+  }
+  .portrait-wrapper {
+    max-height: 340px;
+  }
+  .hero-trust-indicators {
+    padding-top: 1.2rem;
+  }
 }
 
