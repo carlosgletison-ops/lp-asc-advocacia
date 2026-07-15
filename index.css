@@ -17,8 +17,8 @@
   --border-active: rgba(10, 106, 122, 0.45);
   
   /* Fonts */
-  --font-heading: 'Cinzel', serif;
-  --font-body: 'Poppins', sans-serif;
+  --font-heading: 'Playfair Display', 'Cinzel', serif;
+  --font-body: 'Manrope', 'Poppins', sans-serif;
   
   /* Transitions */
   --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -304,97 +304,330 @@ header.scrolled {
   transform: translateY(-4px);
 }
 
-/* Hero Section */
+/* Hero Section - Redesigned for Premium B2C Luxury Law Firm Aesthetics */
 .hero {
-  min-height: 100dvh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
-  padding-top: 160px;
+  padding-top: 145px;
   padding-bottom: 80px;
   position: relative;
+  overflow: hidden;
+  background-color: #FAF6F0; /* Warm Ivory */
+}
+
+/* Subtle background paper texture and radial gradient */
+.hero-bg-texture {
+  position: absolute;
+  inset: 0;
+  opacity: 0.02;
+  pointer-events: none;
+  background-image: radial-gradient(circle at 1px 1px, #2D221C 1px, transparent 0);
+  background-size: 24px 24px;
+  z-index: 1;
+}
+
+.hero-bg-radial {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 60% 40%, rgba(255, 255, 255, 0.85) 0%, rgba(250, 246, 240, 0) 70%);
+  z-index: 1;
 }
 
 .hero-grid {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
-  gap: 4rem;
+  gap: 5rem;
   align-items: center;
+  width: 100%;
+  position: relative;
+  z-index: 2;
 }
 
-.hero-content {
-  max-width: 650px;
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    text-align: center;
+  }
+}
+
+/* Left Column Styling */
+.hero-left-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.8rem;
+}
+
+@media (max-width: 1024px) {
+  .hero-left-content {
+    align-items: center;
+  }
+}
+
+.hero-badge-wrapper {
+  display: inline-flex;
+}
+
+.hero-badge {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary); /* Deep Teal */
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
 .hero-title {
-  font-size: clamp(2.5rem, 5vw, 3.8rem);
-  line-height: 1.15;
-  margin-bottom: 1.8rem;
-  color: var(--on-surface);
+  font-family: var(--font-heading); /* Playfair Display */
+  font-size: clamp(2.6rem, 4.8vw, 3.8rem);
+  line-height: 1.25;
+  font-weight: 400;
+  color: var(--on-surface); /* Espresso Dark */
+  letter-spacing: -0.01em;
 }
 
 .hero-title .highlight {
+  font-style: italic;
+  font-family: var(--font-heading);
   color: var(--primary-container);
+  font-weight: 400;
 }
 
 .hero-desc {
-  font-size: 1.1rem;
-  color: var(--on-surface-variant);
-  margin-bottom: 2.5rem;
+  font-family: var(--font-body); /* Manrope */
+  font-size: 1.05rem;
   font-weight: 300;
-  max-width: 60ch;
+  line-height: 1.7;
+  color: var(--on-surface-variant); /* Muted Warm Taupe */
+  max-width: 58ch;
 }
 
 .hero-actions {
   display: flex;
   gap: 1.5rem;
+  width: 100%;
 }
 
-.hero-visual {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  perspective: 1000px;
+@media (max-width: 1024px) {
+  .hero-actions {
+    justify-content: center;
+  }
 }
 
-.hero-tilt-card {
+@media (max-width: 580px) {
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Premium Buttons Styling */
+.btn-primary-luxury {
+  background: var(--primary); /* Dark Teal */
+  color: var(--on-primary);
+  border-radius: 50px; /* Fully rounded */
+  padding: 1rem 2.2rem;
+  box-shadow: 0 10px 25px rgba(10, 106, 122, 0.15);
+  border: 1px solid var(--primary);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
-  width: 100%;
-  max-width: 460px;
-  border-radius: 16px;
   overflow: hidden;
-  border: 1px solid var(--border);
-  box-shadow: 0 25px 60px rgba(45, 34, 28, 0.08);
-  transition: transform 0.15s ease-out;
-  transform-style: preserve-3d;
+  z-index: 1;
 }
 
-.hero-team-img {
-  width: 100%;
-  height: 480px;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  filter: sepia(0.12) contrast(1.02) brightness(0.98);
-}
-
-.hero-card-badge {
+.btn-primary-luxury::before {
+  content: '';
   position: absolute;
-  bottom: 24px;
-  right: 24px;
-  background: rgba(255, 253, 251, 0.92);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--border);
-  padding: 0.8rem 1.4rem;
-  border-radius: 10px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-container);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+  border-radius: 50px;
+}
+
+.btn-primary-luxury:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 35px rgba(10, 106, 122, 0.3);
+  border-color: var(--primary-container);
+}
+
+.btn-primary-luxury:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.btn-secondary-luxury {
+  background: transparent;
+  color: var(--on-surface);
+  border: 1px solid rgba(45, 34, 28, 0.15); /* Espresso outline */
+  border-radius: 50px;
+  padding: 1rem 2.2rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.arrow-icon {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 16px;
+  height: 16px;
+}
+
+.btn-secondary-luxury:hover {
+  background: rgba(45, 34, 28, 0.03);
+  border-color: var(--on-surface);
+  transform: translateY(-4px);
+}
+
+.btn-secondary-luxury:hover .arrow-icon {
+  transform: translateX(5px);
+}
+
+/* Trust Section below buttons */
+.hero-trust-indicators {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  border-top: 1px solid rgba(10, 106, 122, 0.15);
+  padding-top: 2rem;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1024px) {
+  .hero-trust-indicators {
+    justify-content: center;
+    gap: 1.5rem;
+  }
+}
+
+.trust-item {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  color: var(--primary-container);
-  font-weight: 600;
-  font-size: 0.9rem;
-  box-shadow: 0 8px 24px rgba(45, 34, 28, 0.04);
-  transform: translateZ(30px);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--on-surface-variant);
+  font-weight: 500;
+}
+
+.trust-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+/* Right Column: High-End Editorial Composition */
+.hero-right-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.editorial-composition {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  height: 520px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+/* Large soft beige circle behind portrait */
+.editorial-circle {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background-color: #EFE9DF; /* Soft Beige */
+  z-index: 1;
+}
+
+/* Thin decorative lines */
+.editorial-line {
+  position: absolute;
+  background-color: rgba(10, 106, 122, 0.12);
+  z-index: 2;
+}
+
+.editorial-line-v {
+  top: 0;
+  bottom: 0;
+  left: 15%;
+  width: 1px;
+}
+
+.editorial-line-h {
+  left: 0;
+  right: 0;
+  bottom: 35%;
+  height: 1px;
+}
+
+/* Soft gradients and textures */
+.editorial-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(250, 246, 240, 1) 0%, rgba(250, 246, 240, 0) 40%);
+  z-index: 4;
+  pointer-events: none;
+}
+
+.editorial-paper-decor {
+  position: absolute;
+  top: 15%;
+  right: 10%;
+  width: 70px;
+  height: 90px;
+  border: 1px dashed rgba(10, 106, 122, 0.2);
+  border-radius: 4px;
+  z-index: 2;
+  opacity: 0.6;
+}
+
+/* Portrait Wrapper and Image with soft mask and parallax */
+.portrait-wrapper {
+  position: relative;
+  width: 100%;
+  max-height: 490px;
+  z-index: 3;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+}
+
+.hero-portrait-img {
+  width: 85%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  filter: sepia(0.06) contrast(1.01) brightness(0.99);
+  transition: transform 0.5s ease-out;
+}
+
+.editorial-composition:hover .hero-portrait-img {
+  transform: scale(1.02);
 }
 
 /* Stats Section */
@@ -1995,5 +2228,96 @@ footer {
     transform: scale(1.3);
     opacity: 0;
   }
+}
+
+/* ==========================================
+   ASC ADVOCACIA - PREMIUM HERO MICRO-INTERACTIONS
+   ========================================== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes visualReveal {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleCircle {
+  from {
+    transform: translateX(-50%) scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slowFloat {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Left Side Staggered Entrance */
+.gsap-hero-left {
+  opacity: 0;
+  animation: fadeInUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-badge-wrapper {
+  animation-delay: 0.15s;
+}
+
+.hero-title {
+  animation-delay: 0.3s;
+}
+
+.hero-desc {
+  animation-delay: 0.45s;
+}
+
+.hero-actions {
+  animation-delay: 0.6s;
+}
+
+.hero-trust-indicators {
+  animation-delay: 0.75s;
+}
+
+/* Right Side Composition Entrance and Float */
+.gsap-hero-right {
+  opacity: 0;
+  animation: visualReveal 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.45s;
+}
+
+.editorial-circle {
+  animation: scaleCircle 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.25s;
+}
+
+.editorial-composition {
+  animation: slowFloat 8s ease-in-out infinite;
 }
 

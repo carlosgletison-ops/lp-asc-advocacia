@@ -13,10 +13,10 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/logo.png">
   
-  <!-- Google Fonts: Cinzel (Editorial Serif) and Poppins (Readable Sans) -->
+  <!-- Google Fonts: Cinzel, Poppins, Playfair Display, Manrope -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
   
   <!-- CSS Stylesheet -->
   <link rel="stylesheet" href="index.css">
@@ -66,15 +66,65 @@
 
   <!-- HERO SECTION -->
   <section class="hero">
-    <div class="container hero-container-single">
-      <div class="hero-content-single">
-        <p class="hero-subtitle-top">— em Icó/CE e em todo o Brasil —</p>
-        <h1 class="hero-title-single">Advocacia séria, humana e <span class="highlight">próxima de você</span></h1>
-        <p class="hero-desc-single">Há 4 anos ajudando pessoas a garantir e defender seus direitos com atendimento humanizado, técnico e transparente. Já são mais de 2.000 pessoas atendidas com ética e compromisso.</p>
+    <!-- SUBTLE BACKGROUND ELEMENTS -->
+    <div class="hero-bg-texture"></div>
+    <div class="hero-bg-radial"></div>
+
+    <div class="container hero-grid">
+      <!-- LEFT COLUMN -->
+      <div class="hero-left-content">
+        <div class="hero-badge-wrapper gsap-hero-left">
+          <span class="hero-badge">— EM ICÓ/CE E EM TODO O BRASIL —</span>
+        </div>
         
-        <div class="hero-actions-single">
-          <a href="https://wa.me/5588997650766?text=Ol%C3%A1%20ASC%20Advocacia,%20gostaria%20de%20falar%20com%20um%20advogado." target="_blank" class="btn btn-primary"><i data-lucide="message-square"></i> Falar agora no WhatsApp</a>
-          <a href="#sobre" class="btn btn-secondary">Conhecer a ASC Advocacia <i data-lucide="arrow-down"></i></a>
+        <h1 class="hero-title gsap-hero-left">
+          Advocacia séria, humana e <span class="highlight">próxima de você</span>
+        </h1>
+        
+        <p class="hero-desc gsap-hero-left">
+          Há 4 anos ajudando pessoas a garantir e defender seus direitos com atendimento humanizado, técnico e transparente. Já são mais de 2.000 pessoas atendidas com ética e compromisso.
+        </p>
+        
+        <div class="hero-actions gsap-hero-left">
+          <a href="https://wa.me/5588997650766?text=Ol%C3%A1%20ASC%20Advocacia,%20gostaria%20de%20falar%20com%20um%20advogado." target="_blank" class="btn btn-primary btn-primary-luxury">
+            <i data-lucide="message-square"></i> Falar agora no WhatsApp
+          </a>
+          <a href="#sobre" class="btn btn-secondary btn-secondary-luxury">
+            Conhecer a ASC Advocacia <i data-lucide="arrow-right" class="arrow-icon"></i>
+          </a>
+        </div>
+
+        <!-- TRUST SECTION BELOW BUTTONS -->
+        <div class="hero-trust-indicators gsap-hero-left">
+          <div class="trust-item">
+            <i data-lucide="users" class="trust-icon"></i>
+            <span>+2.000 clientes atendidos</span>
+          </div>
+          <div class="trust-item">
+            <i data-lucide="globe" class="trust-icon"></i>
+            <span>Atendimento em todo o Brasil</span>
+          </div>
+          <div class="trust-item">
+            <i data-lucide="heart" class="trust-icon"></i>
+            <span>Atendimento humanizado</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- RIGHT COLUMN (EDITORIAL COMPOSITION) -->
+      <div class="hero-right-visual gsap-hero-right">
+        <div class="editorial-composition">
+          <!-- Behind elements -->
+          <div class="editorial-circle"></div>
+          <div class="editorial-gradient-overlay"></div>
+          <div class="editorial-paper-decor"></div>
+          <div class="editorial-line editorial-line-v"></div>
+          <div class="editorial-line editorial-line-h"></div>
+          
+          <!-- Portrait of the lawyer -->
+          <div class="portrait-wrapper">
+            <img class="hero-portrait-img" src="assets/lawyer-portrait.png" alt="Advogado ASC Advocacia">
+          </div>
         </div>
       </div>
     </div>

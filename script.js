@@ -162,4 +162,30 @@ document.addEventListener("DOMContentLoaded", () => {
       contactForm.reset();
     });
   }
+
+  // 7. HERO PORTRAIT PARALLAX EFFECT
+  const hero = document.querySelector(".hero");
+  const portrait = document.querySelector(".hero-portrait-img");
+  const circle = document.querySelector(".editorial-circle");
+  
+  if (hero && portrait && circle) {
+    hero.addEventListener("mousemove", (e) => {
+      const { clientX, clientY } = e;
+      const { innerWidth, innerHeight } = window;
+      
+      // Calculate offset from center (-1 to 1)
+      const offsetX = (clientX - innerWidth / 2) / (innerWidth / 2);
+      const offsetY = (clientY - innerHeight / 2) / (innerHeight / 2);
+      
+      // Move portrait slightly
+      portrait.style.transform = `translate(${offsetX * 12}px, ${offsetY * 8}px)`;
+      // Move circle in the opposite direction
+      circle.style.transform = `translate(calc(-50% + ${offsetX * -8}px), ${offsetY * -6}px)`;
+    });
+    
+    hero.addEventListener("mouseleave", () => {
+      portrait.style.transform = "translate(0, 0)";
+      circle.style.transform = "translate(-50%, 0)";
+    });
+  }
 });
