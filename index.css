@@ -1373,14 +1373,66 @@ footer {
    ASC ADVOCACIA - NEW CUSTOM SECTIONS
    ========================================== */
 
+.hero-container-single {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+.hero-content-single {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.hero-title-single {
+  font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+  line-height: 1.25;
+  color: var(--on-surface);
+  margin-bottom: 0.5rem;
+}
+
+.hero-title-single .highlight {
+  color: var(--primary-container);
+}
+
+.hero-desc-single {
+  font-size: 1.15rem;
+  color: var(--on-surface-variant);
+  font-weight: 300;
+  max-width: 70ch;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.hero-actions-single {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .hero-actions-single {
+    flex-direction: column;
+    width: 100%;
+  }
+  .hero-actions-single .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 .hero-subtitle-top {
   font-family: var(--font-heading);
   font-size: 1.15rem;
   font-weight: 600;
   color: var(--primary-container);
   letter-spacing: 0.1em;
-  margin-top: -1.2rem;
-  margin-bottom: 2rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
 }
 
 .services-3-cols {
