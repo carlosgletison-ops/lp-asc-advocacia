@@ -148,9 +148,9 @@ document.addEventListener("DOMContentLoaded", () => {
       
       const intro = `Olá ASC Advocacia!`;
       const body = `Gostaria de solicitar uma consulta/atendimento sobre meu caso:
-- **Nome:** ${name}
-- **WhatsApp/Telefone:** ${phone}
-- **Caso/Dúvida:** ${message}`;
+- *Nome:* ${name}
+- *WhatsApp/Telefone:* ${phone}
+- *Caso/Dúvida:* ${message}`;
       
       const encodedText = encodeURIComponent(intro + "\n\n" + body);
       const whatsappURL = `https://wa.me/5588997650766?text=${encodedText}`;
