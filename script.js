@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 6. CONTACT FORM LEADS REDIRECT TO WHATSAPP
+  // 6. CONTACT FORM LEADS SUBMISSION VIA EMAIL (FormSubmit AJAX)
   const contactForm = document.getElementById("b2c-contact-form");
   if (contactForm) {
     contactForm.addEventListener("submit", (e) => {
@@ -140,26 +140,50 @@ document.addEventListener("DOMContentLoaded", () => {
       const name = document.getElementById("lead-name").value.trim();
       const phone = document.getElementById("lead-phone").value.trim();
       const message = document.getElementById("lead-message").value.trim();
+      const submitBtn = document.getElementById("form-submit-btn");
       
       if (!name || !phone || !message) {
         alert("Por favor, preencha todos os campos obrigatórios.");
         return;
       }
       
-      const intro = `Olá ASC Advocacia!`;
-      const body = `Gostaria de solicitar uma consulta/atendimento sobre meu caso:
-- *Nome:* ${name}
-- *WhatsApp/Telefone:* ${phone}
-- *Caso/Dúvida:* ${message}`;
+      // Show loading/sending state on the button
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'Enviando...';
       
-      const encodedText = encodeURIComponent(intro + "\n\n" + body);
-      const whatsappURL = `https://wa.me/5588997650766?text=${encodedText}`;
-      
-      // Redirect to WhatsApp link
-      window.open(whatsappURL, "_blank");
-      
-      // Reset the form
-      contactForm.reset();
+      // POST to FormSubmit AJAX endpoint
+      fetch("https://formsubmit.co/ajax/ascdocumentacao@gmail.com", {
+        method: "POST",
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          "Nome Completo": name,
+          "WhatsApp / Telefone": phone,
+          "Caso / Dúvida": message,
+          "_subject": "Novo Lead - Site ASC Advocacia"
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Mensagem Enviada! ✓';
+        alert("Mensagem enviada com sucesso! Entraremos em contato em breve.");
+        contactForm.reset();
+        
+        // Reset button state after 3 seconds
+        setTimeout(() => {
+          submitBtn.innerHTML = 'Enviar Mensagem <i data-lucide="send"></i>';
+          if (window.lucide) window.lucide.createIcons();
+        }, 3000);
+      })
+      .catch(error => {
+        console.error("Error submitting form:", error);
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Enviar Mensagem';
+        alert("Ocorreu um erro ao enviar por e-mail. Por favor, tente novamente ou fale diretamente conosco pelo WhatsApp.");
+      });
     });
   }
 
