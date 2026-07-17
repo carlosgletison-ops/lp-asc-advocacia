@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
           "Nome Completo": name,
           "WhatsApp / Telefone": phone,
           "Caso / Dúvida": message,
-          "_subject": "Novo Lead - Site ASC Advocacia"
+          "_subject": "Novo Lead - Site ASC Advogados Associados"
         })
       })
       .then(response => response.json())
